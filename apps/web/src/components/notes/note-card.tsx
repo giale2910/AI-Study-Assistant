@@ -1,0 +1,2 @@
+// TODO: NoteCard component
+export {};
