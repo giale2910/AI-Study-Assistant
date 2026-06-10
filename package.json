@@ -1,0 +1,51 @@
+{
+  "name": "AIStudyAssistant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev": "docker compose up -d && pnpm -r dev",
+    "db:generate": "pnpm --filter db generate",
+    "db:push": "pnpm --filter db push",
+    "db:migrate": "pnpm --filter db migrate",
+    "db:studio": "pnpm --filter db studio",
+    "lint": "pnpm -r --if-present lint",
+    "lint:fix": "pnpm -r --if-present lint:fix",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "build": "pnpm db:generate && pnpm -r --if-present build",
+    "test": "pnpm -r --if-present test",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,yaml,yml,css}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,yaml,yml,css}\"",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.34.1",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.8.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@next/swc-darwin-x64",
+      "@next/swc-darwin-arm64",
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ],
+    "**/*.{json,md,yaml,yml,css}": [
+      "prettier --write"
+    ]
+  }
+}
